@@ -1,7 +1,8 @@
 public class Atoi {
 
     public static void main(String[] args) {
-        System.out.println(myAtoi("42"));
+        System.out.println(myAtoi("-91283472332"));
+
     }
     public static int myAtoi(String s) {
         s=s.trim();
@@ -11,6 +12,13 @@ public class Atoi {
         s=s.substring(1);
         }
         int ans = helper(s,1);
+        System.out.println(ans);
+        if (ans<0){
+            if (positive){
+                return Integer.MAX_VALUE;
+            }
+            else return Integer.MIN_VALUE;
+        }
         if (positive)
             return ans;
         else
@@ -24,7 +32,7 @@ public class Atoi {
             return (ns.charAt(0)-'0')*place;
 
         int a = helper(ns.substring(0, ns.length()-1),place*10);
-                int b = (ns.charAt(ns.length()-1)-30)*place;
+                int b = (ns.charAt(ns.length()-1)-'0')*place;
         return a+b;
     }
 }
